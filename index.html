@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GypsyBall</title>
+  <!-- Add the Tailwind CSS stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Additional CSS for styling improvements */
+    .chat-container {
+      max-height: 400px; /* Limit the chat container's height */
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    #question-box {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    #loading-message {
+      display: none; /* Initially hidden */
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-4 mt-8">
+    <div class="bg-white p-4 rounded-lg shadow-lg mt-4">
+      <h2 class="text-2xl font-semibold mb-4 text-blue-600">GypsyBall Chatbot</h2>
+      <div class="chat-container" id="chat-container"></div>
+      <div id="question-box">
+        <input
+          type="text"
+          id="user-input"
+          class="w-full rounded-md p-2 focus:outline-none bg-gray-200"
+          placeholder="Type your message..."
+        >
+        <button
+          id="send-button"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+        >
+          Send
+        </button>
+      </div>
+      <div id="loading-message" class="text-gray-600 font-semibold">Please wait...</div>
+    </div>
+  </div>
+
+  <script>
+    // API Endpoint URL
+    const API_URL = 'http://localhost:5000/ask_search';
+
+    // DOM Elements
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+    const chatContainer = document.getElementById('chat-container');
+    const loadingMessage = document.getElementById('loading-message');
+
+    // Variable to track the chat message style (Me or AI)
+    let isMeMessage = true;
+
+    // Handle send message
+    async function sendMessage(message) {
+      try {
+        // Display "Me" message immediately
+        displayChatMessage(message, true);
+
+        // Display "Please wait" message
+        loadingMessage.style.display = 'block';
+
+        const formData = new FormData();
+        formData.append('input', message);
+
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Clear "Please wait" message
+          loadingMessage.style.display = 'none';
+
+          // Display AI response in chat
+          displayChatMessage(data.message, false);
+        } else {
+          throw Error(data.error);
+        }
+      } catch (error) {
+        displayStatus('Error sending message - check console');
+        console.error(error);
+      }
+    }
+
+    // Display helper functions
+    function displayStatus(status) {
+      uploadStatus.innerText = status;
+    }
+
+    function displayChatMessage(message, isMe) {
+      const chatMessageDiv = document.createElement('div');
+      chatMessageDiv.classList.add('mb-2', 'p-2', 'border', 'rounded-md', 'chat-message');
+      if (isMe) {
+        chatMessageDiv.classList.add('chat-message-me');
+      }
+      chatMessageDiv.innerText = isMe ? `Me: ${message}` : `AI: ${message}`;
+      chatContainer.appendChild(chatMessageDiv);
+
+      // Clear user input
+      userInput.value = '';
+
+      // Toggle the message style (Me or AI)
+      isMeMessage = !isMeMessage;
+    }
+
+    // Event handlers
+    sendButton.addEventListener('click', async () => {
+      const message = userInput.value;
+      if (message.trim() !== '') {
+        await sendMessage(message);
+      }
+    });
+
+    // Handle enter key press to send message
+    userInput.addEventListener('keydown', async (e) => {
+      if (e.key === 'Enter') {
+        const message = userInput.value;
+        if (message.trim() !== '') {
+          await sendMessage(message);
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>

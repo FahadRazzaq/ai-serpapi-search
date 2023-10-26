@@ -1,0 +1,7 @@
+flask
+utils
+PyPDF2
+anthropic
+langchain
+regex
+dotenv
