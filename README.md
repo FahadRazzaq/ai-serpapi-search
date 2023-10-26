@@ -49,5 +49,3 @@ This project is open source and available under the MIT License. Feel free to us
 ## Elevate User Engagement
 
 Empower your applications and engage users with our Chatbot Assistant. Try it now!
-
-Feel free to replace **Your Name** with your actual details, add your website or profile link, and customize the license information to align with your project's requirements. This `README.md` provides comprehensive information about your Chatbot Assistant project.
