@@ -1,13 +1,12 @@
-
 # Chatbot Assistant with SerpAPI Integration
 
-Welcome to the Chatbot Assistant project, a versatile and powerful tool that combines the capabilities of the GPT-3.5 language model and the SerpAPI for intelligent responses and enhanced search functionality.
+Welcome to the Chatbot Assistant project, a versatile and powerful tool that combines the capabilities of the Claude-2 model by Anthropic and the SerpAPI for intelligent responses and enhanced search functionality.
 
 ## Key Features
 
 ### 1. State-of-the-Art Language Model
 
-Our chatbot utilizes the advanced GPT-3.5 language model, enabling human-like conversational interactions and understanding.
+Our chatbot utilizes the advanced Claude-2 model, enabling human-like conversational interactions and understanding.
 
 ### 2. Dynamic User Engagement
 
@@ -31,7 +30,7 @@ To get started with the Chatbot Assistant, follow these simple steps:
 
 1. Clone the repository to your local machine.
    
-2. Set up your GPT-3.5 API key and SerpAPI key by following the provided instructions in the project.
+2. Set up your Claude-2 API key and SerpAPI key by following the provided instructions in the project.
 
 3. Run the Flask application, and you're ready to engage with the chatbot.
 
