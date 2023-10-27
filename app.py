@@ -94,8 +94,6 @@ def ask_search_assistant():
             link = result.get('link', '')
             snippet = result.get('snippet', '')
 
-            # Check if the result contains relevant information based on your criteria
-            # if "odds" in title.lower() or "game details" in snippet.lower():
             relevant_information += f"Title: {title}\n"
             relevant_information += f"Snippet: {snippet}\n\n"
 
