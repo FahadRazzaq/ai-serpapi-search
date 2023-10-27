@@ -14,7 +14,6 @@ from anthropic import Anthropic, HUMAN_PROMPT, AI_PROMPT
 import os
 from dotenv import load_dotenv
 from flask_cors import CORS  # Import the CORS extension
-
 load_dotenv()
 
 
