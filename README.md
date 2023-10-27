@@ -6,7 +6,7 @@ Welcome to the Chatbot Assistant project, a versatile and powerful tool that com
 
 ### 1. State-of-the-Art Language Model
 
-Our chatbot utilizes the advanced Claude-2 model, enabling human-like conversational interactions and understanding.
+This Chatbot utilizes the advanced Claude-2 model, enabling human-like conversational interactions and understanding.
 
 ### 2. Dynamic User Engagement
 
