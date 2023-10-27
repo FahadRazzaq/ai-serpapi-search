@@ -36,7 +36,7 @@ To get started with the Chatbot Assistant, follow these simple steps:
 
 ## Contributions
 
-We welcome contributions from the community to enhance and expand the capabilities of this chatbot assistant. Whether you're interested in improving conversational abilities, adding new features, or optimizing search functionality, your contributions are valuable.
+I welcome contributions from the community to enhance and expand the capabilities of this chatbot assistant. Whether you're interested in improving conversational abilities, adding new features, or optimizing search functionality, your contributions are valuable.
 
 ## License
 
